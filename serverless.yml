@@ -7,9 +7,15 @@ provider:
   profile: default
 
 functions:
-  api:
+  getVehicle:
     handler: index.getVehicleHandler
     events:
       - httpApi:
           path: /
           method: get
+  postVehicle:
+    handler: index.postVehicleHandler
+    events:
+      - httpApi:
+          path: /
+          method: post
