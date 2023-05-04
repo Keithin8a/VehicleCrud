@@ -1,0 +1,15 @@
+service: vehicleCrud
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: default
+
+functions:
+  api:
+    handler: index.getVehicleHandler
+    events:
+      - httpApi:
+          path: /
+          method: get

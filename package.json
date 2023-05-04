@@ -1,0 +1,23 @@
+{
+    "name": "vehiclecrud",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "deploy": "jest && serverless deploy"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Keithin8a/VehicleCrud.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Keithin8a/VehicleCrud/issues"
+    },
+    "homepage": "https://github.com/Keithin8a/VehicleCrud#readme",
+    "devDependencies": {
+        "jest": "^29.5.0"
+    }
+}
