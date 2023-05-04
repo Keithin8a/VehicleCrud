@@ -6,6 +6,9 @@ provider:
   runtime: nodejs18.x
   profile: default
 
+  environment:
+    DYNAMODB_VEHICLE_TABLE: ${self:service}-vehicleTable-${sls:stage}
+
 functions:
   getVehicle:
     handler: index.getVehicleHandler
@@ -19,3 +22,17 @@ functions:
       - httpApi:
           path: /
           method: post
+	
+resources:
+  Resources:
+    VehicleTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: reg
+            AttributeType: S
+        BillingMode: PAY_PER_REQUEST
+        KeySchema:
+          - AttributeName: reg
+            KeyType: HASH
+        TableName: ${self:service}-vehicleTable-${sls:stage}
