@@ -3,6 +3,10 @@ const postVehicleHandler = require("./postVehicle");
 jest.mock('aws-sdk/clients/dynamodb')
 
 describe("postVehicleHandlerTest", () => {
+    afterEach(() => {
+        //cleanup mocked DB
+    });
+    
     test('Creates the record in the DB and returns it in the response', async () => {
         const input = 'ewogICAgIm1ha2UiOiAidGVzdE1ha2UiLAogICAgIm1vZGVsIjogInRlc3RNb2RlbCIsCiAgICAicmVnIjogIkFBMTFCQkIiLAogICAgInJlZ2lzdHJhdGlvbkRhdGUiOiAiMS8xLzE5OTAiCn0='
         const expectedDbResponse = {

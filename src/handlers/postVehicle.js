@@ -21,7 +21,7 @@ const postVehicleHandler = async (event) => {
     try{
         const body = JSON.parse(Buffer.from(event.body, 'base64').toString());
 
-        const existingRecord = getRecord(dynamoDB, body.reg);
+        const existingRecord = await getRecord(dynamoDB, body.reg);
 
         if(existingRecord){    
             return {
