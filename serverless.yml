@@ -5,9 +5,19 @@ provider:
   name: aws
   runtime: nodejs18.x
   profile: default
-
   environment:
     DYNAMODB_VEHICLE_TABLE: ${self:service}-vehicleTable-${sls:stage}
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - 'dynamodb:PutItem'
+            - 'dynamodb:Get*'
+            - 'dynamodb:Scan*'
+            - 'dynamodb:UpdateItem'
+            - 'dynamodb:DeleteItem'
+          Resource: arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:service}-vehicleTable-${sls:stage}
 
 functions:
   getVehicle:
